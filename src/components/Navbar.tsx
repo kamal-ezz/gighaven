@@ -4,7 +4,9 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav className="flex py-5 items-center">
-      <h1 className="text-lg ml-12">Gighaven</h1>
+      <Link href="/">
+        <h1 className="text-lg ml-12">Gighaven</h1>
+      </Link>
       <ul className="ml-8">
         <li>
           <Link href="/jobs">Jobs</Link>
