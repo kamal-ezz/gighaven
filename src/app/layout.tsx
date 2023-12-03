@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <div className="relative">
+        <div className="relative h-screen">
           {children}
           <Footer />
         </div>
