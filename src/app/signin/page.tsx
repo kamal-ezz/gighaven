@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as z from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { isLoggedIn } from "@/utils/Auth";
 
 const loginFormSchema = z.object({
   email: z.string().email().trim(),
@@ -26,6 +28,12 @@ const loginFormSchema = z.object({
 type LoginFormSchema = z.infer<typeof loginFormSchema>;
 
 export default function Signin() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoggedIn()) router.push("/");
+  }, []);
+
   const form = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -37,13 +45,16 @@ export default function Signin() {
         data
       );
 
-      // Handle the response from the backend
-      console.log(data);
-      console.log(response.data);
+      saveUserData(response);
     } catch (error) {
       // Handle any errors that occur during the request
       console.error(error);
     }
+  };
+
+  const saveUserData = (data: any) => {
+    localStorage.setItem("userData", data);
+    router.push("/");
   };
 
   return (

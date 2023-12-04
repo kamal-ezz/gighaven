@@ -1,5 +1,9 @@
+"use client";
+
+import { isLoggedIn } from "@/utils/Auth";
 import Link from "next/link";
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default function Navbar() {
   return (
@@ -12,14 +16,23 @@ export default function Navbar() {
           <Link href="/jobs">Jobs</Link>
         </li>
       </ul>
-      <ul className="flex gap-5 ml-auto mr-12">
-        <li>
-          <Link href="/signin">Signin</Link>
-        </li>
-        <li>
-          <Link href="/register">Register</Link>
-        </li>
-      </ul>
+      {isLoggedIn() ? (
+        <div className="ml-auto mr-12">
+          <Avatar className="cursor-pointer">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </div>
+      ) : (
+        <ul className="flex gap-5 ml-auto mr-12">
+          <li>
+            <Link href="/signin">Signin</Link>
+          </li>
+          <li>
+            <Link href="/register">Register</Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 }
