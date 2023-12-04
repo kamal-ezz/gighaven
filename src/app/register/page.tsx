@@ -15,7 +15,7 @@ export default function Register() {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-10">
           Sign Up
         </h1>
-        <Steeper />
+        <Steeper currStep={currStep} />
         {currStep == 0 && (
           <First currStep={currStep} setCurrStep={setCurrStep} />
         )}
