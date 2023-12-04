@@ -17,10 +17,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <div className="relative h-screen">
-          {children}
-          <Footer />
-        </div>
+        <div className="mb-28 h-screen">{children}</div>
+        <Footer />
       </body>
     </html>
   );
