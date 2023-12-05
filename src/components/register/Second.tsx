@@ -72,7 +72,7 @@ export default function Second({
 
   return (
     <Form {...form}>
-      <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
         <h3 className="mb-5 text-lg font-medium text-gray-900">
           Choose Account Type:
         </h3>

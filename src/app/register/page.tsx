@@ -19,7 +19,7 @@ export default function Register() {
 
   return (
     <section className="bg-white">
-      <div className="py-8 lg:py-16 px-4 mx-auto sm:max-w-md">
+      <div className="p-12 lg:py-16 mx-auto sm:max-w-md border mt-5">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-10">
           Sign Up
         </h1>
