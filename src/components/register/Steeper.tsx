@@ -12,7 +12,9 @@ export default function Steeper({ currStep }: any) {
           className={`flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 shrink-0 ${
             currStep == 0 ? "bg-blue-300" : "bg-gray-300"
           }`}
-        ></span>
+        >
+          1
+        </span>
       </li>
       <li
         className={`flex w-full items-center ${
@@ -23,7 +25,9 @@ export default function Steeper({ currStep }: any) {
           className={`flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 shrink-0 ${
             currStep == 1 ? "bg-blue-300" : "bg-gray-300"
           }`}
-        ></span>
+        >
+          2
+        </span>
       </li>
     </ol>
   );

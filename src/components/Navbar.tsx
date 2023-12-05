@@ -4,6 +4,14 @@ import { isLoggedIn } from "@/utils/Auth";
 import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import Signin from "./Signin";
 
 export default function Navbar() {
   return (
@@ -26,7 +34,21 @@ export default function Navbar() {
       ) : (
         <ul className="flex gap-5 ml-auto mr-12">
           <li>
-            <Link href="/signin">Signin</Link>
+            <Dialog>
+              <DialogTrigger asChild>
+                <span className="cursor-pointer">Signin</span>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>
+                    <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-10">
+                      Sign in to your account
+                    </h1>
+                  </DialogTitle>
+                </DialogHeader>
+                <Signin />
+              </DialogContent>
+            </Dialog>
           </li>
           <li>
             <Link href="/register">Register</Link>

@@ -60,9 +60,6 @@ export default function Signin() {
   return (
     <section className="bg-white">
       <div className="py-8 lg:py-16 px-4 mx-auto sm:max-w-md">
-        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-10">
-          Sign in to your account
-        </h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
