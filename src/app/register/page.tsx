@@ -3,11 +3,19 @@
 import First from "@/components/register/First";
 import Second from "@/components/register/Second";
 import Steeper from "@/components/register/Steeper";
+import { isLoggedIn } from "@/utils/Auth";
+import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Register() {
+  const router = useRouter();
   const [currStep, setCurrStep] = useState(0);
+  const [nameAndEmailData, SetNameAndEmailData] = useState({});
+
+  useEffect(() => {
+    if (isLoggedIn()) router.push("/");
+  }, []);
 
   return (
     <section className="bg-white">
@@ -17,10 +25,18 @@ export default function Register() {
         </h1>
         <Steeper currStep={currStep} />
         {currStep == 0 && (
-          <First currStep={currStep} setCurrStep={setCurrStep} />
+          <First
+            currStep={currStep}
+            setCurrStep={setCurrStep}
+            SetNameAndEmailData={SetNameAndEmailData}
+          />
         )}
         {currStep == 1 && (
-          <Second currStep={currStep} setCurrStep={setCurrStep} />
+          <Second
+            currStep={currStep}
+            setCurrStep={setCurrStep}
+            nameAndEmailData={nameAndEmailData}
+          />
         )}
       </div>
     </section>

@@ -17,27 +17,57 @@ import { Button } from "../ui/button";
 import { Label } from "@radix-ui/react-label";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
 import { RadioGroup } from "../ui/radio-group";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const secondFormSchema = z.object({
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
-  accountType: z.enum(["freelancer", "employer"]),
+  accountType: z.enum(["Freelancer", "Employer"]),
 });
 
 type SecondFormSchema = z.infer<typeof secondFormSchema>;
 
-export default function Second({ currStep, setCurrStep }: any) {
+export default function Second({
+  currStep,
+  setCurrStep,
+  nameAndEmailData,
+}: any) {
+  const router = useRouter();
+
   const form = useForm<SecondFormSchema>({
     resolver: zodResolver(secondFormSchema),
   });
 
-  const onSubmit = (values: SecondFormSchema) => {
-    console.log(values);
+  const onSubmit = async (values: SecondFormSchema) => {
+    const obj = {
+      name: nameAndEmailData.name,
+      email: nameAndEmailData.email,
+      role: values.accountType,
+      password: values.password,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8888/api/auth/signup",
+        obj
+      );
+
+      saveUserData(response);
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error(error);
+    }
   };
 
   const lastStep = () => {
     if (currStep >= 1) setCurrStep(currStep - 1);
+  };
+
+  const saveUserData = (data: any) => {
+    localStorage.setItem("userData", data);
+    router.push("/");
   };
 
   return (
@@ -62,13 +92,13 @@ export default function Second({ currStep, setCurrStep }: any) {
                     <RadioGroupItem
                       id="employer-option"
                       className="hidden"
-                      value="employer"
+                      value="Employer"
                     />
                   </FormControl>
                   <FormLabel
                     htmlFor="employer-option"
                     className={`inline-flex items-center justify-between w-full p-5  hover:text-gray-600 hover:bg-gray-50 bg-white border-2  rounded-lg cursor-pointer ${
-                      field.value !== "employer"
+                      field.value !== "Employer"
                         ? " border-gray-200 text-gray-500"
                         : "border-blue-600 text-gray-600"
                     }`}
@@ -86,13 +116,13 @@ export default function Second({ currStep, setCurrStep }: any) {
                     <RadioGroupItem
                       id="freelancer-option"
                       className="hidden peer/freelancer"
-                      value="freelancer"
+                      value="Freelancer"
                     />
                   </FormControl>
                   <FormLabel
                     htmlFor="freelancer-option"
                     className={`inline-flex items-center justify-between w-full p-5  hover:text-gray-600 hover:bg-gray-50 bg-white border-2  rounded-lg cursor-pointer ${
-                      field.value !== "freelancer"
+                      field.value !== "Freelancer"
                         ? " border-gray-200 text-gray-500"
                         : "border-blue-600 text-gray-600"
                     }`}

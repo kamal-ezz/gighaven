@@ -22,13 +22,20 @@ const firstFormSchema = z.object({
 
 type FirstFormSchema = z.infer<typeof firstFormSchema>;
 
-export default function First({ currStep, setCurrStep }: any) {
+export default function First({
+  currStep,
+  setCurrStep,
+  SetNameAndEmailData,
+}: any) {
   const form = useForm<FirstFormSchema>({
     resolver: zodResolver(firstFormSchema),
   });
 
   const onSubmit = (values: FirstFormSchema) => {
-    console.log(values);
+    SetNameAndEmailData({
+      name: values.fullName,
+      email: values.email,
+    });
     setCurrStep(currStep + 1);
   };
 
