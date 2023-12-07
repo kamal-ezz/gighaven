@@ -1,8 +1,29 @@
+import Job from "@/components/Job";
+import Searchbar from "@/components/Searchbar";
 import axios from "axios";
 import React from "react";
 
 export default function Jobs() {
-  const jobs = async () => {
+  const jobs = [
+    {
+      id: 1,
+      title: "test",
+      description: "desc",
+      price: 32,
+      datePosted: "12 Decembre",
+      nbBids: 2,
+    },
+    {
+      id: 2,
+      title: "test",
+      description: "desc",
+      price: 32,
+      datePosted: "12 Decembre",
+      nbBids: 2,
+    },
+  ];
+
+  /*async () => {
     try {
       const response = await axios.get("http://localhost:8888/api/job");
 
@@ -11,7 +32,27 @@ export default function Jobs() {
       // Handle any errors that occur during the request
       console.error(error);
     }
-  };
+  };*/
 
-  return <div>Jobs</div>;
+  return (
+    <div className="mt-10 flex flex-col justify-around">
+      <h1 className="ml-20 mb-5 font-semibold text-xl">Find freelance jobs</h1>
+      <Searchbar />
+      <ul>
+        <li>
+          {jobs.map((job) => (
+            <Job
+              title={job.title}
+              description={job.description}
+              price={job.price}
+              datePosted={job.datePosted}
+              key={job.id}
+              id={job.id}
+              nbBids={job.nbBids}
+            />
+          ))}
+        </li>
+      </ul>
+    </div>
+  );
 }
