@@ -28,7 +28,7 @@ export default function Freelancer({
             <span className="font-semibold">{rate}</span>
           </div>
         </div>
-        <Link href={`/profile/${id}`}>
+        <Link href={`/freelancers/${id}`}>
           <Button>View Profile</Button>
         </Link>
       </div>

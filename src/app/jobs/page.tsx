@@ -1,3 +1,4 @@
+"use client";
 import Job from "@/components/Job";
 import Searchbar from "@/components/Searchbar";
 import axios from "axios";
