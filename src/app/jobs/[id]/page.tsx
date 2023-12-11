@@ -1,5 +1,31 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 export default function JobDetails() {
-  return <div>JobDetails</div>;
+  const datePosted = "12 december 2023";
+  const title = "Help set-up WordPress t-shirt site";
+  const price = "300$";
+  const bidsNb = 3;
+  const description =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec utaccumsan elit, ac vestibulum risus. Phasellus porta, augue egetlaoreet congue, lectus nibh sollicitudin metus, vitae finibusrisus tellus non erat. Aliquam sed gravida lectus. Suspendisseeleifend a est sed tincidunt. Quisque vel lorem mattis orcifacilisis venenatis in faucibus ligula. Mauris varius augue portapellentesque interdum. In viverra, quam vitae posuere placerat,";
+
+  return (
+    <div className="mt-5">
+      <div className="flex justify-around items-center">
+        <div className="flex flex-col gap-1">
+          <span className="text-gray-500">Posted : {datePosted}</span>
+          <h1 className="text-xl font-semibold">{title}</h1>
+          <span className="font-semibold">{price}</span>
+          <span className="text-blue-500">Bids : {bidsNb}</span>
+        </div>
+        <Button className="w-fit">Make a Bid</Button>
+      </div>
+      <div>
+        <hr className="mt-3" />
+        <div className="flex justify-around">
+          <p className="mt-3">{description}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
