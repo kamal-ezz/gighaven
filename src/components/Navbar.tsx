@@ -19,7 +19,10 @@ export default function Navbar() {
       <Link href="/">
         <h1 className="text-lg ml-12">Gighaven</h1>
       </Link>
-      <ul className="ml-8">
+      <ul className="ml-8 flex gap-5">
+        <li>
+          <Link href="/freelancers">Freelancers</Link>
+        </li>
         <li>
           <Link href="/jobs">Jobs</Link>
         </li>
