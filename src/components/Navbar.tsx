@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import Signin from "./Signin";
+import { FaRegMessage } from "react-icons/fa6";
 
 export default function Navbar() {
   return (
@@ -28,11 +29,16 @@ export default function Navbar() {
         </li>
       </ul>
       {isLoggedIn() ? (
-        <div className="ml-auto mr-12">
-          <Avatar className="cursor-pointer">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+        <div className="ml-auto mr-12 flex gap-8 items-center">
+          <Link href="/inbox">
+            <FaRegMessage className="text-2xl" />
+          </Link>
+          <Link href="/profile">
+            <Avatar className="cursor-pointer">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </Link>
         </div>
       ) : (
         <ul className="flex gap-5 ml-auto mr-12">
