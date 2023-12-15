@@ -24,6 +24,39 @@ export default function Home() {
           className="mt-10 rounded-full"
         />
       </section>
+      <section className="mt-40 mb-20">
+        <h1 className="text-xl text-center font-semibold">
+          It's easy to get your work done on Gighaven
+        </h1>
+        <div className="mt-20 flex">
+          <div className="w-1/3 px-10">
+            {/*<Image src="#" alt="" width={50} height={50} />*/}
+            <h3 className="text-lg font-semibold mb-3">Post a Job</h3>
+            <p>
+              Start receiving bids within hours by creating your own free job
+              posting.
+            </p>
+          </div>
+
+          <div className="w-1/3 px-10">
+            {/*<Image src="#" alt="" width={50} height={50} />*/}
+            <h3 className="text-lg font-semibold mb-3">Hire Freelancers</h3>
+            <p>
+              Evaluate the received bids and engage the most skilled freelance
+              professionals for the job.
+            </p>
+          </div>
+
+          <div className="w-1/3 px-10">
+            {/*<Image src="#" alt="" width={50} height={50} />*/}
+            <h3 className="text-lg font-semibold mb-3">Get Work Done</h3>
+            <p>
+              Determine the payment terms and schedule while utilizing WorkRooms
+              for seamless collaboration, communication, and work monitoring.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
