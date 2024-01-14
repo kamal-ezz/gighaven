@@ -16,7 +16,7 @@ export default function Home() {
           </Link>
         </div>
         <img
-          src="/hero.png"
+          src="../assets/hero.png"
           width={300}
           height={300}
           alt="hero"
